@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Footer from './container/Footer/Footer'
+import Header from './container/Header/Header'
+import Main from './container/Main/Main'
+
+import { StyledEngineProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import './styles/App.scss'
+import { Route, Routes } from 'react-router-dom'
+import ProductList from './pages/ProductList'
+import AddProduct from './pages/AddProduct'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <StyledEngineProvider injectFirst>
+            <CssBaseline />
+            <Header />
+            <Routes>
+                <Route path="/" element={<ProductList />}></Route>
+
+                <Route path="/addProduct" element={<AddProduct />}></Route>
+            </Routes>
+            <Footer />
+        </StyledEngineProvider>
+    )
 }
 
-export default App;
+export default App

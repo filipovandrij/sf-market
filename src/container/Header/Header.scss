@@ -1,0 +1,19 @@
+.tool_bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_pages {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.menu-item {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-item-active {
+    text-decoration: none;
+    color: black;
+}
