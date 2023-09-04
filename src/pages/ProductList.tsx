@@ -2,19 +2,21 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { fetchProducts } from '../redux/productsSlice'
 import ProductsListItem from '../components/ProductsList/ProductsListItem'
+import AddedProductsItem from '../components/ProductsList/AddedProductsItem'
 
 type Props = {}
 const ProductList = (props: Props) => {
     const dispatch = useAppDispatch()
 
-    // Загружаем данные из Redux
     const products = useAppSelector((state) => state.products)
 
     console.log(products)
     useEffect(() => {
-        // Вызываем действие для загрузки товаров
         dispatch(fetchProducts())
     }, [dispatch])
+
+    const addedGoods = useAppSelector((state) => state.newProducts)
+    console.log('asd', addedGoods)
 
     return (
         <main className="product_list">
@@ -41,6 +43,17 @@ const ProductList = (props: Props) => {
                     />
                 )
             )}
+            {addedGoods
+                ? addedGoods.map(({ id, title, author, year, rating }) => (
+                      <AddedProductsItem
+                          id={id}
+                          title={title}
+                          author={author}
+                          year={year}
+                          rating={rating}
+                      />
+                  ))
+                : null}
         </main>
     )
 }

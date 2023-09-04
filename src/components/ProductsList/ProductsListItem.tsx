@@ -44,7 +44,7 @@ const ProductsListItem = ({
             />
 
             <CardActions className="product-btn-wrap">
-                <Button variant="outlined">Add to cart</Button>
+                <Button variant="contained">Buy</Button>
             </CardActions>
         </Card>
     )

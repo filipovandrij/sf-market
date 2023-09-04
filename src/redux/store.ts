@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import productsReducer from './productsSlice';
+import newProductsSlice from './newProductsSlice';
 
 export const store = configureStore({
   reducer: {
-    products: productsReducer, // Подключаем срез products
-    // Другие срезы, если они есть
+    products: productsReducer, 
+    newProducts: newProductsSlice
   },
 });
 
