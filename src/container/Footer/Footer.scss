@@ -1,0 +1,19 @@
+.footer_box {
+    margin-top: 80px;
+    padding: 14px 24px;
+    background-color: #1976d2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+
+    height: 100%;
+    h4 {
+        font-weight: 900;
+        margin-bottom: 14px;
+    }
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}

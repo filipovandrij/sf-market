@@ -7,11 +7,11 @@ import {
     Modal,
     Rating,
     TextField,
-    Typography,
 } from '@mui/material'
 import { useAppDispatch } from '../../redux/hooks'
 import { removeProduct, updateProduct } from '../../redux/newProductsSlice'
 import { useState } from 'react'
+import './AddedProductsItem.scss'
 
 type Props = {
     id: number
@@ -44,8 +44,8 @@ const AddedProductsItem = ({ id, title, author, year, rating }: Props) => {
     }
 
     const [updatedData, setUpdatedData] = useState({
-        title: '',
-        author: '',
+        title: title,
+        author: author,
         year: '',
         rating: '',
     })
@@ -110,36 +110,46 @@ const AddedProductsItem = ({ id, title, author, year, rating }: Props) => {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style}>
-                        <TextField
-                            id="outlined-basic"
-                            label="Name"
-                            variant="outlined"
-                            value={updatedData.title}
-                            onChange={handleTitleChange}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            label="Author"
-                            variant="outlined"
-                            value={updatedData.author}
-                            onChange={handleAuthorChange}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            label="Year"
-                            variant="outlined"
-                            value={updatedData.year}
-                            onChange={handleYearChange}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            label="Rating"
-                            variant="outlined"
-                            value={updatedData.rating}
-                            onChange={handleRatingChange}
-                        />
-                        <Button onClick={handleSaveChanges}>save</Button>
+                    <Box sx={style} className="modal_box">
+                        <div className="update_name">
+                            <TextField
+                                id="outlined-basic"
+                                label="Name"
+                                variant="outlined"
+                                value={updatedData.title}
+                                onChange={handleTitleChange}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                label="Author"
+                                variant="outlined"
+                                value={updatedData.author}
+                                onChange={handleAuthorChange}
+                            />
+                        </div>
+                        <div className="update_years">
+                            <TextField
+                                id="outlined-basic"
+                                label="Year"
+                                variant="outlined"
+                                value={updatedData.year}
+                                onChange={handleYearChange}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                label="Rating"
+                                variant="outlined"
+                                value={updatedData.rating}
+                                onChange={handleRatingChange}
+                            />
+                        </div>
+                        <Button
+                            className="save_btn"
+                            variant="contained"
+                            onClick={handleSaveChanges}
+                        >
+                            save
+                        </Button>
                     </Box>
                 </Modal>
             </CardActions>

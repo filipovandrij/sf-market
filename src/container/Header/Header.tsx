@@ -9,8 +9,12 @@ import Search from '../../components/headerComponents/Search'
 
 import Button from '@mui/material/Button'
 import { NavLink } from 'react-router-dom'
-type Props = {}
-const Header = (props: Props) => {
+import { useState } from 'react'
+type Props = {
+    setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+}
+const Header = ({ setSearchQuery }: Props) => {
+    const [choiceBtn, setChoiceBtn] = useState<boolean>(true)
     return (
         <header>
             <Box sx={{ flexGrow: 1 }}>
@@ -29,32 +33,26 @@ const Header = (props: Props) => {
                             </IconButton>
                         </Typography>
                         <div className="main_pages">
-                            <Button variant="contained">
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? 'menu-item-active'
-                                            : 'menu-item'
-                                    }
+                            <NavLink to="/" className="menu-item">
+                                <Button
+                                    color={choiceBtn ? 'success' : 'primary'}
+                                    variant="contained"
+                                    onClick={() => setChoiceBtn(true)}
                                 >
                                     Product List
-                                </NavLink>
-                            </Button>
-                            <Button variant="contained">
-                                <NavLink
-                                    to="/addProduct"
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? 'menu-item-active'
-                                            : 'menu-item'
-                                    }
+                                </Button>
+                            </NavLink>
+                            <NavLink to="/addProduct" className="menu-item">
+                                <Button
+                                    color={choiceBtn ? 'primary' : 'success'}
+                                    variant="contained"
+                                    onClick={() => setChoiceBtn(false)}
                                 >
                                     Add new
-                                </NavLink>
-                            </Button>
+                                </Button>
+                            </NavLink>
                         </div>
-                        <Search />
+                        <Search setSearchQuery={setSearchQuery} />
                     </Toolbar>
                 </AppBar>
             </Box>
