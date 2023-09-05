@@ -21,7 +21,7 @@ const Slider = ({ images }: Props) => {
         <Swiper {...swiperParams} className="mySwiper">
             {images.map((image, index) => (
                 <SwiperSlide key={index}>
-                    <img key={index} src={image} alt={`Image ${index + 1}`} />
+                    <img key={index} src={image} alt={`${index + 1}`} />
                 </SwiperSlide>
             ))}
         </Swiper>
