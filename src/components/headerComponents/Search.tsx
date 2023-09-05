@@ -1,5 +1,3 @@
-import { styled, alpha } from '@mui/material/styles'
-import { useState } from 'react'
 import './Search.scss'
 
 type Props = {
